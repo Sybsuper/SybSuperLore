@@ -1,4 +1,10 @@
 name: SybSuperLore
 main: me.sybsuper.SybSuperLore.Main
-version: 1.0.0
+version: 1.0.1
 author: Sybsuper
+commands:
+  sybsuperlore:
+    aliases: [ssl,superlore]
+    permission: sybsuperlore.reload
+    description: Reload the config.yml file.
+    usage: /sybsuperlore

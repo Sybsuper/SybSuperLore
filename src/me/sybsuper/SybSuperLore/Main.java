@@ -19,7 +19,10 @@ import org.bukkit.inventory.ShapelessRecipe;
 import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.plugin.java.JavaPlugin;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
 import java.util.logging.Level;
 
 public class Main extends JavaPlugin {
@@ -67,7 +70,7 @@ public class Main extends JavaPlugin {
 				for (Map.Entry<Character, ItemStack> entry : ingredients.entrySet()) {
 					Character c = entry.getKey();
 					ItemStack i = entry.getValue();
-					if (i!=null) {
+					if (i != null) {
 						try {
 							newRecipe.setIngredient(
 									c,
