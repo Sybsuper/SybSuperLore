@@ -53,6 +53,7 @@ public class Main extends JavaPlugin {
 					newRecipe.addIngredient(ingredient.getAmount(), ingredient.getType());
 				}
 				recipeList.add(newRecipe);
+				iter.remove();
 			} else if (r instanceof ShapedRecipe) {
 				ShapedRecipe recipe = (ShapedRecipe) r;
 				Map<Character, ItemStack> ingredients = recipe.getIngredientMap();
@@ -74,16 +75,16 @@ public class Main extends JavaPlugin {
 						try {
 							newRecipe.setIngredient(
 									c,
-									i.getType()
+									i.getData().getItemType()
 							);
+							recipeList.add(newRecipe);
+							iter.remove();
 						} catch (NullPointerException e) {
 							getLogger().log(Level.WARNING, "Result: " + result.getType().toString());
 						}
 					}
 				}
-				recipeList.add(newRecipe);
 			}
-			iter.remove();
 		}
 		for (Recipe r : recipeList) {
 			Bukkit.addRecipe(r);
