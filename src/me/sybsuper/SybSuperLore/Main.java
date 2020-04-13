@@ -68,6 +68,7 @@ public class Main extends JavaPlugin {
 				String[] shape = recipe.getShape();
 				ShapedRecipe newRecipe = new ShapedRecipe(result);
 				newRecipe.shape(shape);
+				boolean wood = false;
 				for (Map.Entry<Character, ItemStack> entry : ingredients.entrySet()) {
 					Character c = entry.getKey();
 					ItemStack i = entry.getValue();
@@ -75,14 +76,18 @@ public class Main extends JavaPlugin {
 						try {
 							newRecipe.setIngredient(
 									c,
-									i.getData().getItemType()
+									i.getType()
 							);
 							recipeList.add(newRecipe);
-							iter.remove();
 						} catch (NullPointerException e) {
 							getLogger().log(Level.WARNING, "Result: " + result.getType().toString());
 						}
+					} else {
+						wood = true;
 					}
+				}
+				if (!wood) {
+					iter.remove();
 				}
 			}
 		}
